@@ -28,6 +28,9 @@ else:
 new_enc = 'signed-integer'
 new_bd = '16'
 
+attrs['dtype'] = '<i2'
+bark.write_metadata(args.output, **attrs)
+
 sox_cmd = ['sox', '-r', sr, '-c', ch, '-b', bd, '-e', enc,
            '--endian', order, '-t', 'raw', args.input,
            '-b', new_bd, '-e', new_enc, '-t', 'raw', args.output]
