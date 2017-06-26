@@ -65,7 +65,7 @@ def gen_stim_times(entry_fn, adc_fn, out_fn):
                              **{'columns': {'name': {'units': None},
                                             'start': {'units': 's'},
                                             'stop': {'units': 's'}},
-                                           'datatype': 2002})
+                                           'datatype': 2001})
     
 
 def _main():
