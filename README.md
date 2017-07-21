@@ -14,4 +14,4 @@ Every script should provide usage info via the `-h` argument.
 + `pull_times`: summarizes Bark entries in a root by hour of day
 + `remove_empty_csvs`: removes .csv files which do not meet length criteria
 + `remove_extra_intro_notes`: removes intro notes from Bark event datasets that occur far away from song
-
++ `winnow_entries`: removes all entries in a given root for which a specified event dataset is empty (useful to tidy up roots with lots of useless entries)
