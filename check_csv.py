@@ -48,7 +48,7 @@ def check_csv(event_dset, sampled, out, beginning, reverse, end):
         pass
     if end != 'ignore': # only open the sampled dataset if necessary
         sampled_dset = bark.read_sampled(sampled)
-        dset_end = sampled_dset.data.shape[1]
+        dset_end = sampled_dset.data.shape[0]
         if events.attrs['columns']['start']['units'] == 's':
             dset_end = dset_end / sampled_dset.attrs['sampling_rate']
         if end == 'truncate':
