@@ -52,9 +52,10 @@ def concatenate_datasets(sampled, events, out, entry_list):
     if sys.platform == 'win32':
         cat_cmd.pop() # remove the last '+'
         cat_cmd.extend([sampled_out, '/B'])
+        subprocess.run(cat_cmd)
     else:
-        cat_cmd.extend(['>', sampled_out])
-    subprocess.run(cat_cmd)
+        with open(sampled_out, 'wb') as outfile:
+            subprocess.run(cat_cmd, stdout=outfile)
     bark.write_metadata(sampled_out, **sds_metadata)
 
 def _parse_args(raw_args):
@@ -62,7 +63,7 @@ def _parse_args(raw_args):
     p = argparse.ArgumentParser(description=desc)
     p.add_argument('sampled_ds', help='name of sampled dataset')
     p.add_argument('event_ds', help='name of event dataset')
-    p.add_argument('out', help='name of output datasets (shared) (extension will be ignored)'))
+    p.add_argument('out', help='name of output datasets (shared) (extension will be ignored)')
     p.add_argument('entry', help='entries to search for datasets', nargs='+')
     return p.parse_args(raw_args)
 
